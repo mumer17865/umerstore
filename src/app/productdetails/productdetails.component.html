@@ -1,0 +1,21 @@
+<div class="main">
+    <div class="product-details-container">
+    <div class="product-image">
+        <img  [src]="Item?.image" alt="productName">
+    </div>
+    <div class="product-info">
+        <h1>{{Item?.productName}}</h1>
+        <p>{{Item?.desc}}</p>
+        <p>In Stock</p>
+        <p>{{Item?.price| pkrCurrency}} </p>
+        <div class="quantity-controls">
+          <button (click)="decrement()"><strong>-</strong></button>
+          <input  type="text" class="counter-input" [(ngModel)]="quat" readonly>
+          <button (click)="increment()"><strong>+</strong></button>
+        </div>
+        <button (click)="increment1()" class="add-to-cart-btn">Add To Cart</button>
+    </div>
+</div>
+</div>
+    
+

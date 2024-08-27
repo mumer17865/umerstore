@@ -1,0 +1,26 @@
+<div>
+    <table>
+      <thead>
+        <tr>
+          <th>       </th>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of items">
+        <tr>
+          <td>
+            <img [src]="item.image" alt="{{ item.productName }}" class="product-image" />
+          </td>
+          <td>
+            <span>{{ item.productName }}</span>
+          </td>
+          <td>{{ item.unitPrice | currency}}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.subTotal | currency}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

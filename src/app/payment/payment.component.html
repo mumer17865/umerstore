@@ -1,0 +1,94 @@
+<div>
+    <div class="checkout_btn"><span class="btnImg"><img src="https://bsecure-prod.s3.eu-west-1.amazonaws.com/prod/merchants/branding/8263/checkout_button_9912.png" alt=""/></span></div>
+</div>
+<div class="container" *ngIf="tokenLength<1">
+    <p>There is no item in your cart click below button to continue shopping</p>
+    <br><button class="empty" (click)="emptyMethod()">Continue to Shopping</button>
+</div>
+<div class="main" *ngIf="tokenLength>0">
+<div class="tab">
+            <h2>Payment Method</h2>
+            <!-- <form >
+            <input type="radio" formControlName="option" name="c" value="cash">
+            <label for="method1">
+                    <span class="btnIm"><img src="https://support.sitegiant.com/wp-content/uploads/2022/08/cash-on-delivery-banner.png" alt=""/> &#160; Cash on Delivery</span>
+            </label>
+            <hr>
+            <input type="radio" formControlName="option" name="c" value="card" (click)="checkSelection()"><br><br>
+            <label for="method2">
+                    <span class="btnI"><img src="https://bsecure-prod-images.imgix.net/prod/merchants/branding/8263/gateway_icon_9912.png?auto=compress" alt=""/><br><br> &#160; bSecure payments via debit cards and credit cards</span>
+            </label>
+            &#160;<button>Place Order</button>
+            </form> -->
+            <form>
+                <label>
+                  <input type="radio" name="option" [(ngModel)]="selectedOption" value="cod">
+                  <span class="btnIm">
+                    <img src="https://support.sitegiant.com/wp-content/uploads/2022/08/cash-on-delivery-banner.png" alt=""/>
+                    &#160; Cash on Delivery
+                  </span><br><br>
+                  <button class="full" type="button" *ngIf="selectedOption==='cod'" (click)="cOD()">Place Order</button>
+                </label>
+                <hr>
+                <label>
+                  <input type="radio" name="option" [(ngModel)]="selectedOption" value="card">
+                  <span class="btnI">
+                    <img src="https://bsecure-prod-images.imgix.net/prod/merchants/branding/8263/gateway_icon_9912.png?auto=compress" alt=""/>
+                    <br><br> &#160; bSecure payments via debit cards and credit cards
+                  </span><br><br>
+                  <button class="full" type="button" *ngIf="selectedOption==='card'" (click)="placeOrder()">Place Order</button>
+                </label>
+              </form>
+              
+    </div>
+    <div class="order-summary" *ngIf="tokenLength>0">
+        <h2>Order Summary</h2>
+        <hr>
+        
+        <div class="summary-section">
+            <p>Cart Subtotal <span>PKR {{subTotal}}</span></p>
+            <p>Shipping <br>Local Shipment - Fixed <span>PKR 199.00</span></p>
+        </div>
+        
+        <hr>
+        
+        <div class="total-section">
+            <h2>Order Total <span>PKR {{grandTotal}}</span></h2>
+        </div>
+        
+        
+    
+        <h3>{{tokenLength}} Item in Cart </h3>
+        <hr>
+        <div class="cart-items" *ngFor="let item of token">
+            <div class="item">
+                <img [src]="item.image" alt={{item.productName}}>
+                <div class="item-details">
+                    <p>{{item.productName}}</p>
+                    <p>Qty: {{item.quantity}}</p>
+                    <p>PKR {{item.price}}</p>
+                </div>
+            </div>
+            <hr>
+        </div>
+    
+        <div *ngFor="let information of info"  class="shipping-info">
+            <h3>Ship To:</h3>
+            <p>{{information.name}}</p>
+            <p>{{information.address}}</p>
+            <p>KARACHI, Sindh</p>
+            <p>75600</p>
+            <p>Pakistan</p>
+            <p>{{information.contact}}</p>
+        </div>
+    
+        
+        
+        <div class="shipping-method">
+            <h3>Shipping Method:</h3>
+            <hr>
+            <p>Local Shipment - Fixed</p>
+        </div>
+    </div>
+</div>
+    

@@ -1,0 +1,52 @@
+<div>
+    <div>
+      <h1>Order History</h1>
+      <div *ngFor="let order of orders">
+        <div class="order-summary" (click)="filterOrdersByOrderId(order.orderId)">
+          <h3>Order Number: {{ order.orderId }}</h3>
+          <p><strong>{{ order.createdAt | dateTimeFormat }}</strong></p><br><br>
+          <h4 class="total"><strong>Total: </strong>{{ order.total | pkrCurrency }}</h4>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Popup Modal for Order Details -->
+    <div *ngIf="isPopupVisible" class="modal-overlay" (click)="closePopup()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <span class="close-button" (click)="closePopup()">&times;</span>
+        <div class="table-top">
+          <p class="orderno"><strong>Order Number: {{ selectedOrder?.orderId }}</strong></p>
+          <p>{{ selectedOrder?.createdAt | dateTimeFormat }}</p>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>       </th>
+              <th>Product</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let item of selectedOrder?.items">
+            <tr>
+              <td>
+                <img [src]="item.image" alt="{{ item.productName }}" class="product-image" />
+              </td>
+              <td><span>{{ item.productName }}</span></td>
+              <td>{{ item.unitPrice | pkrCurrency}}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.subTotal | pkrCurrency}}</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4" class="text-right"><h2>Total:</h2></td>
+              <td><strong>{{ selectedOrder?.total | pkrCurrency }}</strong></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+  

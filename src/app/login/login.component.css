@@ -1,0 +1,78 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top , rgba(238,174,202,1) 30%, rgba(148,187,233,1) 100%);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+
+  
+  .center {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+  
+  h2 {
+    margin-bottom: 2rem;
+    color: #444;
+  }
+  
+  
+  
+  form input {
+    width: calc(100% - 2rem);
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+  }
+  
+  form input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  form input[value = "Login"]{
+    width: calc(100% - 2rem);
+    padding: 0.75rem;
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    transition: background 0.3s ease;
+  }
+  form input[value = "Register"]{
+    width: calc(50% - 6rem);
+    padding: 0.75rem;
+    background: linear-gradient(to right, #03ce36, #03ce36);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 0.75rem;
+    transition: background 0.3s ease;
+   }
+   form input[value = "Register"]:hover {
+    background: linear-gradient(to right, #26741a, #4dc35b);
+  }
+  
+  form input[value = "Login"]:hover {
+    background: linear-gradient(to right, #0056b3, #0096d1);
+  }
+
+
+  

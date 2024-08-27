@@ -1,0 +1,62 @@
+<div class="main">
+    <h1><b>Checkout</b></h1>
+    <div class="checkout-box">
+      <div class="yy">
+        <div class="details">
+        <form>
+          <input type="name" id="name" name="name" [(ngModel)]="name" required readonly/>
+          <input type="contact" id="contact" placeholder="Mobile Number eg:03001234567" name="contact" [(ngModel)]="contact" required />
+          <input type="email" id="email" name="email" [(ngModel)]="email" required readonly/>
+          <input type="address" id="address" placeholder="Shipping Address" name="address" [(ngModel)]="address" required />
+        </form>
+        </div>
+        <!-- New div added here -->
+        <div class="additional-details">
+          <form>
+            <input type="datetime-local" id="time" placeholder="Choose Delivery Time" name="time" [(ngModel)]="time" required />
+            <input type="ins" id="ins" placeholder="Special Instruction(optional)" name="ins" [(ngModel)]="ins" />
+          </form>
+        </div>
+      </div>
+      <div *ngIf="!showCartItem" class="cart-empty">
+        <h2>Your Cart</h2>
+        <h3>Your Cart is empty</h3>
+      </div>
+      <div *ngIf="showCartItem" class="checkout-container">
+        <div class="tab">
+        <h2>Your Cart</h2>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of cartItems">
+                <td>
+                  <img [src]="item.image" alt="{{ item.productName }}" class="product-image" />
+                </td>
+                <td>
+                  <span>{{ item.productName }}</span>
+                </td>
+                <td>{{ item.price | pkrCurrency}}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.total | pkrCurrency}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="summary">
+          <p>Subtotal: <span>{{ getSubtotal() | pkrCurrency }}</span></p>
+          <p>Delivery Charge: <span>{{ deliveryCharge | pkrCurrency}}</span></p>
+          <h3>Grand Total: <span>{{ getGrandTotal() | pkrCurrency}}</span></h3>
+        </div>
+        <button (click)="placeOrder(); clearCart()">Proceed to payment</button>
+      </div>
+    </div>
+  </div>
+  

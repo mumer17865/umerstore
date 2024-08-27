@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    margin: 50px;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  .product-image {
+    padding: 0%;
+    margin: 0%;
+    width: 7vw;
+    height: 7vw;
+    min-width: 4vw;
+    min-height: 4vw;
+  }
+    
+  
+  

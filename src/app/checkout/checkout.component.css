@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  
+  h2{
+    padding: 20px;
+  }
+  
+  
+  
+  .checkout-box {
+    display: flex;
+    background: rgba(255, 237, 237, 0.8);
+    justify-content: space-around;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 95%;
+    margin: 0 auto; /* Centering the box */
+  }
+  
+  .checkout-container {
+    width: 40%;
+    background: rgba(233, 194, 194, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1%;
+    max-width: 100%;
+    margin: 0 2% 20px; /* No margin at the top */
+  }
+  
+  .checkout-container h2 {
+    margin-top: 0;
+    text-align: justify;
+    background: rgba(232, 192, 192, 0.8);
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  
+  
+  .cart-empty {
+    width: 40%;
+    background: rgba(233, 194, 194, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    max-width: 95%;
+    margin: 0 2% 20px; /* No margin at the top */
+    height: 10%;
+  }
+  
+  .cart-empty h2 {
+    margin-top: 0;
+    text-align: justify;
+    background: rgba(232, 192, 192, 0.8);
+    border-radius: 5px;
+    padding: 5px;
+  }
+  
+  .summary {
+    padding: 5px 0;
+    text-align: center;
+  }
+  
+  .summary p,
+  .summary h3 {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+  }
+  
+  
+  .summary span {
+    float: right;
+  }
+  
+  table {
+    width: 95%;
+    border-collapse: collapse;
+  }
+  
+  th,
+  td {
+    border-bottom: 1px solid #ddd;
+    max-width: 100%;
+    padding: 1%;
+  }
+  
+  .product-image {
+    padding: 0%;
+    margin: 0%;
+    width: 7vw;
+    height: 7vw;
+    min-width: 4vw;
+    min-height: 4vw;
+  }
+  
+  button {
+    margin-top: 20px;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(to right, #03ce36, #03ce36);
+    border: none;
+    width: 100%;
+    max-width: 250px; /* Adjust max-width as needed */
+    border-radius: 5px;
+    margin-bottom: 20px;
+    height: auto;
+    min-height: 50px;
+  }
+  
+  button:hover {
+    background: linear-gradient(to right, #26741a, #4dc35b);
+  }
+  
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 0 20px;
+    margin-top: 20px;
+  }
+  
+  
+  
+  form input {
+    flex: 1 1 calc(33% - 40px);
+    padding: 10px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+  }
+  
+  form input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .additional-details {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(233, 194, 194, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    max-width: 95%;
+    margin: 0 2% 20px; /* No margin at the top */
+  }
+  
+  .details {
+    display: flex;
+    justify-content: space-around;
+    background: rgba(233, 194, 194, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    max-width: 95%;
+    margin: 0 2% 20px; /* No margin at the top */
+  }
+  
+  .additional-details form,
+  .details form {
+    display: flex;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .checkout-box {
+        flex-direction: column;
+        padding: 10px;
+    }
+  
+    .checkout-container,
+    .cart-empty,
+    .additional-details,
+    .details {
+        width: 95%;
+        padding: 10px;
+    }
+  
+    button {
+        width: 100%;
+        max-width: 300px; /* Adjust max-width as needed */
+        margin: 10px auto; /* Center button horizontally */
+    }
+  
+    .additional-details,
+    .details {
+        margin-top: 20px; /* Remove horizontal translation */
+    }
+  }
+  
