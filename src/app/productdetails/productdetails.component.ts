@@ -57,7 +57,7 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   fetchProductDetails(productId: number) {
-    axios.get(`http://localhost:3000/products/itemList/${productId}`)
+    axios.get(`https://ecommerce-application-beryl.vercel.app/products/itemList/${productId}`)
       .then((response) => {
         this.Item = response.data[0];
       })
