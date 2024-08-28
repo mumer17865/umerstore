@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
       return false;
     } else {
       return from(
-        axios.get('http://localhost:3000/authenticated', {
+        axios.get('https://ecommerce-application-beryl.vercel.app/authenticated', {
           headers: {
             'Authorization': `Bearer ${token}`
           }
