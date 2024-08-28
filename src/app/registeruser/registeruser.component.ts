@@ -34,7 +34,7 @@ export class RegisterUserComponent {
     };
     
 
-    axios.post('http://localhost:3000/auth/register', data)
+    axios.post('https://ecommerce-application-beryl.vercel.app/auth/register', data)
     .then((response) => {
       if(response.data?.data1?.notuserCreated){
         alert('User already exists');
