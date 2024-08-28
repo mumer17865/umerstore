@@ -3,13 +3,14 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import axios from 'axios';
 import { Observable, from } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { UserService } from './services/user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private UserService: UserService) {
     // Set up interceptors once during service initialization
     this.setupAxiosInterceptors();
   }
@@ -25,7 +26,7 @@ export class AuthGuard implements CanActivate {
       return false;
     } else {
       return from(
-        axios.get('http://localhost:3000/authenticated', {
+        axios.get(`${this.UserService.apiUrl}/authenticated`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

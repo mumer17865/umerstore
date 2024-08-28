@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,10 @@ export class LoginComponent{
   pass: string | undefined;
   cartService: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,private UserService: UserService) {}
 
   login() {
-    axios.post('http://localhost:3000/auth/login', {
+    axios.post(`${this.UserService.apiUrl}/auth/login`, {
       uname: this.uname,
       pass: this.pass
     })

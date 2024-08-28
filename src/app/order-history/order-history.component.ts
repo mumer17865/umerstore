@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DateTimeFormatPipe } from '../date-time-format.pipe';
 import { CurrencyPipe } from '@angular/common';
 import { PkrCurrencyPipe } from "../pkr-currency.pipe";
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-order-history',
@@ -22,6 +23,7 @@ export class OrderHistoryComponent {
     private route: ActivatedRoute,
     private router: Router,
     private CurrencyPipe: CurrencyPipe,
+    private UserService: UserService,
   ) {}
   filteredOrders: any[] | undefined;
   ngOnInit(): void {
@@ -32,7 +34,7 @@ export class OrderHistoryComponent {
   }
 
   fetchProductDetails(userId: number) {
-    axios.get(`http://localhost:3000/getHistory/history/${userId}`)
+    axios.get(`${this.UserService.apiUrl}/getHistory/history/${userId}`)
       .then((response) => {
         this.processOrders(response.data);
       })

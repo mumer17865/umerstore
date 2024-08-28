@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../services/user.service';
 
 interface Product {
   productId: number;
@@ -42,7 +43,7 @@ export class DashboardComponent implements OnInit {
   num: number = 0;
   token: string = '';
 
-  constructor(private router: Router, private cartService: CartService, private renderer: Renderer2) {}
+  constructor(private router: Router, private cartService: CartService, private renderer: Renderer2, private UserService: UserService,) {}
 
   ngOnInit() {
     this.token = sessionStorage.getItem('token') ?? '';
@@ -74,7 +75,7 @@ export class DashboardComponent implements OnInit {
 
   products() {
     if (!this.showProducts) {
-      axios.get('http://localhost:3000/products/itemList')
+      axios.get(`${this.UserService.apiUrl}/products/itemList`)
         .then((response) => {
           const cartItems = this.cartService.getCartItems();
           this.ItemList = response.data.map((item: any) => {

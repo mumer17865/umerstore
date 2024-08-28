@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-payment',
@@ -21,7 +22,7 @@ export class PaymentComponent implements OnInit {
   grandTotal = 0;
   link = '';
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(private router: Router, private cartService: CartService, private UserService: UserService) {}
 
   ngOnInit(): void {
     const storedItems = sessionStorage.getItem('cartItems') ?? '[]';
@@ -44,7 +45,7 @@ export class PaymentComponent implements OnInit {
       subTotal: this.subTotal,
       grandTotal: this.grandTotal,
     };
-    axios.post('http://localhost:3000/create-order', orderData)
+    axios.post(`${this.UserService.apiUrl}/create-order`, orderData)
       .then((response) => {
         if (response.data) {
           this.cartService.clearCart();
@@ -68,7 +69,7 @@ export class PaymentComponent implements OnInit {
     };
   
   
-    axios.post('http://localhost:3000/orders/checkout', orderData)
+    axios.post(`${this.UserService.apiUrl}/orders/checkout`, orderData)
       .then((response) => {
         if (response.data.success) {
           alert('Order placed successfully!');
