@@ -32,7 +32,7 @@ export class OrderHistoryComponent {
   }
 
   fetchProductDetails(userId: number) {
-    axios.get(`http://localhost:3000/getHistory/history/${userId}`)
+    axios.get(`https://ecommerce-application-beryl.vercel.app/getHistory/history/${userId}`)
       .then((response) => {
         this.processOrders(response.data);
       })
