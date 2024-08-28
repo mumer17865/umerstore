@@ -25,7 +25,7 @@ export class AuthGuard implements CanActivate {
       return false;
     } else {
       return from(
-        axios.get('http://localhost:3000/authenticated', {
+        axios.get('https://backend-production-fe58.up.railway.app/authenticated', {
           headers: {
             'Authorization': `Bearer ${token}`
           }

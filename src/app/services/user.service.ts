@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:3000'; // Replace with your backend URL
+  private apiUrl = 'https://backend-production-fe58.up.railway.app'; // Replace with your backend URL
 
   constructor(private http: HttpClient) {}
 
