@@ -18,7 +18,7 @@ export class LoginComponent{
   constructor(private router: Router) {}
 
   login() {
-    axios.post('http://localhost:3000/auth/login', {
+    axios.post('https://ecommerce-application-beryl.vercel.app/auth/login', {
       uname: this.uname,
       pass: this.pass
     })
