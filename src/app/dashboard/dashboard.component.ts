@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
 
   products() {
     if (!this.showProducts) {
-      axios.get('http://localhost:3000/products/itemList')
+      axios.get('https://ecommerce-application-beryl.vercel.app/products/itemList')
         .then((response) => {
           const cartItems = this.cartService.getCartItems();
           this.ItemList = response.data.map((item: any) => {
