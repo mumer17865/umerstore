@@ -74,7 +74,7 @@ export class DashboardComponent implements OnInit {
 
   products() {
     if (!this.showProducts) {
-      axios.get('https://backend-production-fe58.up.railway.app/products/itemList')
+      axios.get('http://localhost:3000/products/itemList')
         .then((response) => {
           const cartItems = this.cartService.getCartItems();
           this.ItemList = response.data.map((item: any) => {

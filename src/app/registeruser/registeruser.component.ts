@@ -34,7 +34,7 @@ export class RegisterUserComponent {
     };
     
 
-    axios.post('https://backend-production-fe58.up.railway.app/auth/register', data)
+    axios.post('http://localhost:3000/auth/register', data)
     .then((response) => {
       if(response.data?.data1?.notuserCreated){
         alert('User already exists');

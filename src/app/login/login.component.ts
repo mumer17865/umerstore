@@ -18,7 +18,7 @@ export class LoginComponent{
   constructor(private router: Router) {}
 
   login() {
-    axios.post('https://backend-production-fe58.up.railway.app/auth/login', {
+    axios.post('http://localhost:3000/auth/login', {
       uname: this.uname,
       pass: this.pass
     })
