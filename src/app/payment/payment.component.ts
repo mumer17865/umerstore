@@ -44,7 +44,7 @@ export class PaymentComponent implements OnInit {
       subTotal: this.subTotal,
       grandTotal: this.grandTotal,
     };
-    axios.post('http://localhost:3000/create-order', orderData)
+    axios.post('https://ecommerce-application-beryl.vercel.app/create-order', orderData)
       .then((response) => {
         if (response.data) {
           this.cartService.clearCart();
