@@ -44,7 +44,7 @@ export class PaymentComponent implements OnInit {
       subTotal: this.subTotal,
       grandTotal: this.grandTotal,
     };
-    axios.post('http://localhost:3000/create-order', orderData)
+    axios.post('https://backend-production-fe58.up.railway.app/create-order', orderData)
       .then((response) => {
         if (response.data) {
           this.cartService.clearCart();
@@ -68,7 +68,7 @@ export class PaymentComponent implements OnInit {
     };
   
   
-    axios.post('http://localhost:3000/orders/checkout', orderData)
+    axios.post('https://backend-production-fe58.up.railway.app/orders/checkout', orderData)
       .then((response) => {
         if (response.data.success) {
           alert('Order placed successfully!');

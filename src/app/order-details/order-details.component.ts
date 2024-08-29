@@ -26,7 +26,7 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   fetchOrderDetails(id: number, orderId: number) {
-    axios.get(`http://localhost:3000/getHistory/history/${id}/details${orderId}`)
+    axios.get(`https://backend-production-fe58.up.railway.app/getHistory/history/${id}/details${orderId}`)
       .then((response) => {
         this.items = response.data;
       })
