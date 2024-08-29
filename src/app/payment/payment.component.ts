@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-payment',
@@ -22,7 +23,7 @@ export class PaymentComponent implements OnInit {
   grandTotal = 0;
   link = '';
 
-  constructor(private router: Router, private cartService: CartService, private UserService: UserService) {}
+  constructor(private router: Router, private cartService: CartService, private UserService: UserService, private http: HttpClient) {}
 
   ngOnInit(): void {
     const storedItems = sessionStorage.getItem('cartItems') ?? '[]';

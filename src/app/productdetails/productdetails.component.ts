@@ -6,6 +6,7 @@ import { PkrCurrencyPipe } from '../pkr-currency.pipe';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../services/cart.service';
 import { UserService } from '../services/user.service';
+import { HttpClient } from '@angular/common/http';
 
 interface Product {
   productId: number;
@@ -38,7 +39,8 @@ export class ProductdetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private CurrencyPipe: CurrencyPipe,
     private cartService: CartService,
-    private UserService: UserService
+    private UserService: UserService,
+    private http: HttpClient
   ) {}
 
   decrement() {

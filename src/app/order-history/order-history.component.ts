@@ -6,6 +6,7 @@ import { DateTimeFormatPipe } from '../date-time-format.pipe';
 import { CurrencyPipe } from '@angular/common';
 import { PkrCurrencyPipe } from "../pkr-currency.pipe";
 import { UserService } from '../services/user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-order-history',
@@ -24,6 +25,7 @@ export class OrderHistoryComponent {
     private router: Router,
     private CurrencyPipe: CurrencyPipe,
     private UserService: UserService,
+    private http: HttpClient
   ) {}
   filteredOrders: any[] | undefined;
   ngOnInit(): void {

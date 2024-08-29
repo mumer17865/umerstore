@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  apiUrl = 'https://backend-production-fe58.up.railway.app'; // Replace with your backend URL
+  apiUrl = `https://backend-production-fe58.up.railway.app`; // Replace with your backend URL
 
   constructor(private http: HttpClient) {}
 

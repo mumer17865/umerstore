@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import axios from 'axios';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../services/user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-order-details',
@@ -17,7 +18,7 @@ export class OrderDetailsComponent implements OnInit {
   items: any[] = [];
   id: number | undefined;
 
-  constructor(private route: ActivatedRoute, private UserService: UserService) {}
+  constructor(private route: ActivatedRoute, private UserService: UserService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

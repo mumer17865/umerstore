@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CurrencyPipe } from '@angular/common';
 import { PkrCurrencyPipe } from "../pkr-currency.pipe";
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-checkout',
@@ -31,7 +32,7 @@ export class CheckoutComponent implements OnInit {
   Payload: any;
   token: string = '';
 
-  constructor(private CurrencyPipe: CurrencyPipe, private cartService: CartService, private router: Router) {}
+  constructor(private CurrencyPipe: CurrencyPipe, private cartService: CartService, private router: Router, private http: HttpClient) {}
 
   ngOnInit() {
     this.token = sessionStorage.getItem('token') ?? '';

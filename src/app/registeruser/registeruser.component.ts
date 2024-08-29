@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import axios from 'axios';
 import { UserService } from '../services/user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registeruser',
@@ -18,7 +19,7 @@ export class RegisterUserComponent {
   pass: any;
   rpass: any;
   
-  constructor(private router: Router, private UserService: UserService) { }
+  constructor(private router: Router, private UserService: UserService, private http: HttpClient) { }
 
 
 

@@ -4,13 +4,15 @@ import axios from 'axios';
 import { Observable, from } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { UserService } from './services/user.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router, private UserService: UserService) {
+  constructor(private router: Router, private UserService: UserService, private http: HttpClient) {
     // Set up interceptors once during service initialization
     this.setupAxiosInterceptors();
   }
