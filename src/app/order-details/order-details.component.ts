@@ -2,9 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import axios from 'axios';
-import { FormsModule } from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-order-details',
@@ -18,7 +15,7 @@ export class OrderDetailsComponent implements OnInit {
   items: any[] = [];
   id: number | undefined;
 
-  constructor(private route: ActivatedRoute, private UserService: UserService, private http: HttpClient) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -29,7 +26,7 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   fetchOrderDetails(id: number, orderId: number) {
-    axios.get(`${this.UserService.apiUrl}/getHistory/history/${id}/details${orderId}`)
+    axios.get(`http://localhost:3000/getHistory/history/${id}/details${orderId}`)
       .then((response) => {
         this.items = response.data;
       })

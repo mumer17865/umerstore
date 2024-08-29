@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import axios from 'axios';
-import { UserService } from '../services/user.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-registeruser',
@@ -19,7 +17,7 @@ export class RegisterUserComponent {
   pass: any;
   rpass: any;
   
-  constructor(private router: Router, private UserService: UserService, private http: HttpClient) { }
+  constructor(private router: Router) { }
 
 
 
@@ -36,7 +34,7 @@ export class RegisterUserComponent {
     };
     
 
-    axios.post(`${this.UserService.apiUrl}/auth/register`, data)
+    axios.post('http://localhost:3000/auth/register', data)
     .then((response) => {
       if(response.data?.data1?.notuserCreated){
         alert('User already exists');

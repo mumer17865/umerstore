@@ -5,8 +5,6 @@ import { CurrencyPipe } from '@angular/common';
 import { PkrCurrencyPipe } from '../pkr-currency.pipe';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../services/cart.service';
-import { UserService } from '../services/user.service';
-import { HttpClient } from '@angular/common/http';
 
 interface Product {
   productId: number;
@@ -38,9 +36,7 @@ export class ProductdetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private CurrencyPipe: CurrencyPipe,
-    private cartService: CartService,
-    private UserService: UserService,
-    private http: HttpClient
+    private cartService: CartService
   ) {}
 
   decrement() {
@@ -61,7 +57,7 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   fetchProductDetails(productId: number) {
-    axios.get(`${this.UserService.apiUrl}/products/itemList/${productId}`)
+    axios.get(`http://localhost:3000/products/itemList/${productId}`)
       .then((response) => {
         this.Item = response.data[0];
       })
