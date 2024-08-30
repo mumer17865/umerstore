@@ -32,7 +32,7 @@ export class OrderHistoryComponent {
   }
 
   fetchProductDetails(userId: number) {
-    axios.get(`https://backend-production-fe58.up.railway.app/getHistory/history/${userId}`)
+    axios.get(`https://backend-production-3c07.up.railway.app/getHistory/history/${userId}`)
       .then((response) => {
         this.processOrders(response.data);
       })
