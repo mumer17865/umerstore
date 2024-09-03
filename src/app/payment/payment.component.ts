@@ -87,9 +87,10 @@ export class PaymentComponent implements OnInit {
     axios
       .post(`${this.apiUrl}/orders/checkout`, orderData)
       .then((response) => {
-        this.cartService.clearCart();
         if (response.data.success) {
           // alert('Order placed successfully!');
+          
+        this.cartService.clearCart();
           window.location.reload();
         } else {
           alert(
