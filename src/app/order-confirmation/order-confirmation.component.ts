@@ -31,8 +31,8 @@ export class OrderConfirmationComponent implements OnInit {
     axios.post(`${this.apiUrl}/order-status`, { orderRef })
       .then(
         (response) => {
-          this.orderStatus = response.data.payment_status;
-          console.log('Order status:', response);
+          this.orderStatus = response;
+          console.log('Order status:', response.data.body.payment_method);
         },
         (error) => {
           console.error('Error fetching order status:', error);
