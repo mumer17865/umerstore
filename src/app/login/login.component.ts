@@ -20,7 +20,7 @@ export class LoginComponent{
   constructor(private router: Router) {}
 
   login() {
-    axios.post(`${this.apiUrl}auth/login`, {
+    axios.post(`${this.apiUrl}/auth/login`, {
       uname: this.uname,
       pass: this.pass
     })
