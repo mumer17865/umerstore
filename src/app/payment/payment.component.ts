@@ -60,7 +60,6 @@ export class PaymentComponent implements OnInit {
       .post(`${this.apiUrl}/create-order`, orderData)
       .then((response) => {
         if (response.data) {
-          this.cartService.clearCart();
           console.log(response.data);
           this.goToPayment(response.data.result1);
         } else {
