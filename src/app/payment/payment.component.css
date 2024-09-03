@@ -64,6 +64,9 @@ button {
     font-size: 18px;
     margin-bottom: 10px;
 }
+.msg h3{
+    text-align: center;
+}
 
 .summary-section p,
 .total-section p {
