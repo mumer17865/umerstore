@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
   private storageKey = 'cartItems';
+  private storageKey1 = 'order';
+  private storageKey2 = 'grandtotal';
+  private storageKey3 = 'subtotal';
   private productsKey = 'products';
 
   constructor() { }
@@ -44,6 +47,9 @@ export class CartService {
 
   clearCart() {
     sessionStorage.removeItem(this.storageKey);
+    sessionStorage.removeItem(this.storageKey1);
+    sessionStorage.removeItem(this.storageKey2);
+    sessionStorage.removeItem(this.storageKey3);
   }
 
   updateQuantity(productId: number, quantity: number) {
