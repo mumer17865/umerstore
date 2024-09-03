@@ -88,14 +88,36 @@ export class PaymentComponent implements OnInit {
       .post(`${this.apiUrl}/orders/checkout`, orderData)
       .then((response) => {
         if (response.data.success) {
-          // alert('Order placed successfully!');
-          
-        this.cartService.clearCart();
-          window.location.reload();
+          alert('Order placed successfully!');
+          this.cartService.clearCart();
+          this.router.navigate(['/dashboard']);
         } else {
           alert(
             'Request failed: ' + (response.data.message || 'Unknown error')
           );
+        }
+      })
+      .catch((error) => {
+        alert(
+          'Request failed: ' +
+            (error.response?.data?.message || 'Unknown error')
+        );
+      });
+  }
+
+  cOD1() {
+    const orderData = {
+      cartItems: this.token,
+      customerInfo: this.info,
+      subTotal: this.subTotal,
+      grandTotal: this.grandTotal,
+    };
+
+    axios
+      .post(`${this.apiUrl}/orders/checkout`, orderData)
+      .then((response) => {
+        if (response.data.success) {
+        this.cartService.clearCart();
         }
       })
       .catch((error) => {
@@ -120,7 +142,7 @@ export class PaymentComponent implements OnInit {
         this.orderStatus = response;
         console.log('Order status:', response.data.body.payment_method);
         if(response.data.body.payment_method.transaction_id){
-          this.cOD();
+          this.cOD1();
         }
       },
       (error) => {
