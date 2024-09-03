@@ -132,6 +132,10 @@ export class DashboardComponent implements OnInit {
     this.showCart = false;
   }
 
+  showHistory(){
+    this.router.navigate([`./order-history/${this.Payload.id}`]);
+  }
+
   hideUser() {
     this.showUser = false;
   }
