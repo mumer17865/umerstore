@@ -90,7 +90,7 @@ export class PaymentComponent implements OnInit {
         this.cartService.clearCart();
         if (response.data.success) {
           // alert('Order placed successfully!');
-          this.router.navigate(['/payment']);
+          this.router.navigate(['/payment/4']);
         } else {
           alert(
             'Request failed: ' + (response.data.message || 'Unknown error')
