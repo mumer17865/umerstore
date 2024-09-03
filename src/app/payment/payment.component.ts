@@ -118,6 +118,7 @@ export class PaymentComponent implements OnInit {
       .then((response) => {
         if (response.data.success) {
         this.cartService.clearCart();
+        window.location.reload();
         }
       })
       .catch((error) => {
