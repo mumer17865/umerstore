@@ -6,6 +6,11 @@
   }
   
   ul {
+    display: flex;
+  justify-content: space-between; /* This will spread out the items in the nav bar */
+  align-items: center; /* Vertically center the items */
+  padding: 0;
+  margin: 0;
     list-style-type: none;
     overflow: hidden;
     background: radial-gradient(circle, rgba(238,174,202,1) 30%, rgba(148,187,233,1) 100%);
@@ -45,8 +50,8 @@
     text-align: center;
     padding: 0.75rem; /* Use relative units */
     text-decoration: none;
-    width: 60px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
   }
   
   li a:hover {
@@ -291,7 +296,24 @@
     object-fit: cover;
     border-radius: 5px;
   }
-  
+
+  .name1{ /* Allows this element to take up available space */
+    padding: 0;
+    margin: 0;
+  }
+
+.logo{
+  width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 0;
+    margin: 0;
+    padding: 0;
+}
+  .name1 img {
+    width: 300px;
+    height: 50px;
+  }
   .item-details {
     flex: 1;
   }
