@@ -18,8 +18,7 @@ export const routes: Routes = [
   { path: 'productdetails/:id', component: ProductdetailsComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   { path: 'order-history/:id', component: OrderHistoryComponent, canActivate: [AuthGuard]},
-  { path: 'payment/:orderId', component: PaymentComponent, canActivate: [AuthGuard]},
-  { path: 'order-status', component: OrderConfirmationComponent, canActivate: [AuthGuard]},
+  { path: 'payment/:orderId', component: PaymentComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
