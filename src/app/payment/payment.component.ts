@@ -3,7 +3,7 @@ import { CartService } from '../services/cart.service';
 import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from '../environment';
 
 @Component({
@@ -14,6 +14,8 @@ import { environment } from '../environment';
   styleUrls: ['./payment.component.css'],
 })
 export class PaymentComponent implements OnInit {
+  orderRef: string | null = null;
+  orderStatus: any = null;
   private apiUrl = environment.apiUrl;
   token: any[] = [];
   info: any[] = [];
@@ -23,7 +25,7 @@ export class PaymentComponent implements OnInit {
   grandTotal = 0;
   link = '';
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(private router: Router, private cartService: CartService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     const storedItems = sessionStorage.getItem('cartItems') ?? '[]';
@@ -37,6 +39,7 @@ export class PaymentComponent implements OnInit {
     const storedValue1 = sessionStorage.getItem('grandtotal') ?? '0';
     this.grandTotal = parseInt(storedValue1, 10);
     this.tokenLength = this.token.length;
+    this.orderRef = this.route.snapshot.queryParamMap.get('order_ref');
   }
 
   placeOrder() {
@@ -90,7 +93,23 @@ export class PaymentComponent implements OnInit {
   }
   
 emptyMethod(){
+  if (this.orderRef) {
+    this.getOrderStatus(this.orderRef);
+  }
   this.router.navigate(['/dashboard']);
 }
+
+  getOrderStatus(orderRef: string): void {
+    axios.post(`${this.apiUrl}/order-status`, { orderRef })
+      .then(
+        (response) => {
+          this.orderStatus = response;
+          console.log('Order status:', response.data.body.payment_method);
+        },
+        (error) => {
+          console.error('Error fetching order status:', error);
+        }
+      );
+  }
 
 }
