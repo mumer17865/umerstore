@@ -1,7 +1,7 @@
 <div class="prime">
     <nav>
       <ul>
-        <li><a>Products</a></li>
+        <li><a><img src="assets/Logo-removebg-preview.png" alt="Logo"></a></li>
         <div class="username">
           <div class="c" (click)="cart1(); hideUser();" matBadge="{{num}}" [matBadgeHidden]="! (num > 0)"><mat-icon aria-hidden="false" aria-label="cart icon" fontIcon="shopping_cart"></mat-icon></div>
           <li><a (click)="User()"><div class="login-icon">{{ getInitials(Payload.Name) }}</div></a></li>

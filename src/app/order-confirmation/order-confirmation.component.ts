@@ -31,7 +31,7 @@ export class OrderConfirmationComponent implements OnInit {
     axios.post(`${this.apiUrl}/order-status`, { orderRef })
       .then(
         (response) => {
-          this.orderStatus = response;
+          this.orderStatus = response.data.payment_status;
           console.log('Order status:', response);
         },
         (error) => {
