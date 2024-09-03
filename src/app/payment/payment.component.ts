@@ -25,7 +25,11 @@ export class PaymentComponent implements OnInit {
   grandTotal = 0;
   link = '';
 
-  constructor(private router: Router, private cartService: CartService, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     const storedItems = sessionStorage.getItem('cartItems') ?? '[]';
@@ -40,6 +44,9 @@ export class PaymentComponent implements OnInit {
     this.grandTotal = parseInt(storedValue1, 10);
     this.tokenLength = this.token.length;
     this.orderRef = this.route.snapshot.queryParamMap.get('order_ref');
+    if (this.orderRef) {
+      this.getOrderStatus(this.orderRef);
+    }
   }
 
   placeOrder() {
@@ -49,18 +56,24 @@ export class PaymentComponent implements OnInit {
       subTotal: this.subTotal,
       grandTotal: this.grandTotal,
     };
-    axios.post(`${this.apiUrl}/create-order`, orderData)
+    axios
+      .post(`${this.apiUrl}/create-order`, orderData)
       .then((response) => {
         if (response.data) {
           this.cartService.clearCart();
           console.log(response.data);
           this.goToPayment(response.data.result1);
         } else {
-          alert('Request failed: ' + (response.data.message || 'Unknown error'));
+          alert(
+            'Request failed: ' + (response.data.message || 'Unknown error')
+          );
         }
       })
       .catch((error) => {
-        alert('Request failed: ' + (error.response?.data?.message || 'Unknown error'));  
+        alert(
+          'Request failed: ' +
+            (error.response?.data?.message || 'Unknown error')
+        );
       });
   }
 
@@ -71,45 +84,48 @@ export class PaymentComponent implements OnInit {
       subTotal: this.subTotal,
       grandTotal: this.grandTotal,
     };
-  
-  
-    axios.post(`${this.apiUrl}/orders/checkout`, orderData)
+
+    axios
+      .post(`${this.apiUrl}/orders/checkout`, orderData)
       .then((response) => {
         if (response.data.success) {
           alert('Order placed successfully!');
           this.router.navigate(['/dashboard']);
           this.cartService.clearCart();
         } else {
-          alert('Request failed: ' + (response.data.message || 'Unknown error'));
+          alert(
+            'Request failed: ' + (response.data.message || 'Unknown error')
+          );
         }
       })
       .catch((error) => {
-        alert('Request failed: ' + (error.response?.data?.message || 'Unknown error'));  
+        alert(
+          'Request failed: ' +
+            (error.response?.data?.message || 'Unknown error')
+        );
       });
   }
 
-  goToPayment(s: string){
+  goToPayment(s: string) {
     window.location.href = s;
   }
-  
-emptyMethod(){
-  if (this.orderRef) {
-    this.getOrderStatus(this.orderRef);
+
+  emptyMethod() {
+    this.router.navigate(['/dashboard']);
   }
-  this.router.navigate(['/dashboard']);
-}
 
   getOrderStatus(orderRef: string): void {
-    axios.post(`${this.apiUrl}/order-status`, { orderRef })
-      .then(
-        (response) => {
-          this.orderStatus = response;
-          console.log('Order status:', response.data.body.payment_method);
-        },
-        (error) => {
-          console.error('Error fetching order status:', error);
+    axios.post(`${this.apiUrl}/order-status`, { orderRef }).then(
+      (response) => {
+        this.orderStatus = response;
+        console.log('Order status:', response.data.body.payment_method);
+        if(response.data.body.payment_method.transaction_id){
+          this.cOD();
         }
-      );
+      },
+      (error) => {
+        console.error('Error fetching order status:', error);
+      }
+    );
   }
-
 }
