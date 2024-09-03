@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import axios from 'axios';
 import { FormsModule } from '@angular/forms';
+import { environment } from '../environment';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './login.component.css'
 })
 export class LoginComponent{
+  private apiUrl = environment.apiUrl;
   uname: string | undefined;
   pass: string | undefined;
   cartService: any;
@@ -18,7 +20,7 @@ export class LoginComponent{
   constructor(private router: Router) {}
 
   login() {
-    axios.post('https://backend-production-3c07.up.railway.app/auth/login', {
+    axios.post(`${this.apiUrl}auth/login`, {
       uname: this.uname,
       pass: this.pass
     })

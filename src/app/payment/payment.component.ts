@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
 import { Router } from '@angular/router';
+import { environment } from '../environment';
 
 @Component({
   selector: 'app-payment',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./payment.component.css'],
 })
 export class PaymentComponent implements OnInit {
+  private apiUrl = environment.apiUrl;
   token: any[] = [];
   info: any[] = [];
   selectedOption: string = '';
@@ -44,7 +46,7 @@ export class PaymentComponent implements OnInit {
       subTotal: this.subTotal,
       grandTotal: this.grandTotal,
     };
-    axios.post('https://backend-production-3c07.up.railway.app/create-order', orderData)
+    axios.post(`${this.apiUrl}/create-order`, orderData)
       .then((response) => {
         if (response.data) {
           this.cartService.clearCart();
@@ -68,7 +70,7 @@ export class PaymentComponent implements OnInit {
     };
   
   
-    axios.post('https://backend-production-3c07.up.railway.app/orders/checkout', orderData)
+    axios.post(`${this.apiUrl}/orders/checkout`, orderData)
       .then((response) => {
         if (response.data.success) {
           alert('Order placed successfully!');
@@ -84,7 +86,6 @@ export class PaymentComponent implements OnInit {
   }
 
   goToPayment(s: string){
-    console.log(s);
     window.location.href = s;
   }
   

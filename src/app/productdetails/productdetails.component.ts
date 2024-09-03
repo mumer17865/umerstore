@@ -5,6 +5,7 @@ import { CurrencyPipe } from '@angular/common';
 import { PkrCurrencyPipe } from '../pkr-currency.pipe';
 import { FormsModule } from '@angular/forms';
 import { CartService } from '../services/cart.service';
+import { environment } from '../environment';
 
 interface Product {
   productId: number;
@@ -27,6 +28,7 @@ interface Product {
   styleUrls: ['./productdetails.component.css']
 })
 export class ProductdetailsComponent implements OnInit {
+  private apiUrl = environment.apiUrl;
   quat = 1;
   cartItems: any[] = [];
   showCartItem: boolean = false;
@@ -57,7 +59,7 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   fetchProductDetails(productId: number) {
-    axios.get(`https://backend-production-3c07.up.railway.app/products/itemList/${productId}`)
+    axios.get(`${this.apiUrl}/products/itemList/${productId}`)
       .then((response) => {
         this.Item = response.data[0];
       })

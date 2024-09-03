@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import axios from 'axios';
+import { environment } from '../environment';
 
 @Component({
   selector: 'app-registeruser',
@@ -11,6 +12,7 @@ import axios from 'axios';
   styleUrl: './registeruser.component.css'
 })
 export class RegisterUserComponent {
+  private apiUrl = environment.apiUrl;
   name: any;
   email: any;
   uname: any;
@@ -34,7 +36,7 @@ export class RegisterUserComponent {
     };
     
 
-    axios.post('https://backend-production-3c07.up.railway.app/auth/register', data)
+    axios.post(`${this.apiUrl}/auth/register`, data)
     .then((response) => {
       if(response.data?.data1?.notuserCreated){
         alert('User already exists');

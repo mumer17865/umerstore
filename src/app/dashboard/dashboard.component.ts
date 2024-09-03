@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CommonModule } from '@angular/common';
+import { environment } from '../environment';
 
 interface Product {
   productId: number;
@@ -28,7 +29,7 @@ interface Product {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  private apiUrl = environment.apiUrl;
   deliveryCharge = 199;
   showProducts: boolean = false;
   showUser: boolean = false;
@@ -74,7 +75,7 @@ export class DashboardComponent implements OnInit {
 
   products() {
     if (!this.showProducts) {
-      axios.get('https://backend-production-3c07.up.railway.app/products/itemList')
+      axios.get(`${this.apiUrl}/products/itemList`)
         .then((response) => {
           const cartItems = this.cartService.getCartItems();
           this.ItemList = response.data.map((item: any) => {

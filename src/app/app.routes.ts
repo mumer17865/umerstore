@@ -8,6 +8,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { PaymentComponent } from './payment/payment.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   { path: 'order-history/:id', component: OrderHistoryComponent, canActivate: [AuthGuard]},
   { path: 'payment/:orderId', component: PaymentComponent, canActivate: [AuthGuard]},
+  { path: 'order-status', component: OrderConfirmationComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

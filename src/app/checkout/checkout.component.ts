@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CurrencyPipe } from '@angular/common';
 import { PkrCurrencyPipe } from "../pkr-currency.pipe";
+import { environment } from '../environment';
 
 @Component({
   selector: 'app-checkout',
@@ -18,6 +19,7 @@ import { PkrCurrencyPipe } from "../pkr-currency.pipe";
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
+  private apiUrl = environment.apiUrl;
   deliveryCharge = 199;
   cartItems: any[] = [];
   id: any;
@@ -91,22 +93,7 @@ export class CheckoutComponent implements OnInit {
     ];
 
     sessionStorage.setItem('order', JSON.stringify(orderData));
-  
-  
-    // axios.post('http://localhost:3000/orders/checkout', orderData)
-    //   .then((response) => {
-    //     if (response.data.success) {
-    //       alert('Order placed successfully!');
-    //       this.router.navigate(['/dashboard']);
-    //       this.cartService.clearCart();
-    //     } else {
-    //       alert('Request failed: ' + (response.data.message || 'Unknown error'));
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     alert('Request failed: ' + (error.response?.data?.message || 'Unknown error'));  
-    //   });
-
+    
     this.router.navigate(['/payment/4']);
   }
 }
@@ -132,6 +119,24 @@ export class CheckoutComponent implements OnInit {
   
   
     // axios.post('http://localhost:3000/orders/checkout', orderData)
+    //   .then((response) => {
+    //     if (response.data.success) {
+    //       alert('Order placed successfully!');
+    //       this.router.navigate(['/dashboard']);
+    //       this.cartService.clearCart();
+    //     } else {
+    //       alert('Request failed: ' + (response.data.message || 'Unknown error'));
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     alert('Request failed: ' + (error.response?.data?.message || 'Unknown error'));  
+    //   });
+
+
+
+
+
+        // axios.post('http://localhost:3000/orders/checkout', orderData)
     //   .then((response) => {
     //     if (response.data.success) {
     //       alert('Order placed successfully!');

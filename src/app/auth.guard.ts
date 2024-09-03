@@ -3,12 +3,13 @@ import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import axios from 'axios';
 import { Observable, from } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { environment } from './environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-
+  private apiUrl = environment.apiUrl;
   constructor(private router: Router) {
     // Set up interceptors once during service initialization
     this.setupAxiosInterceptors();
@@ -25,7 +26,7 @@ export class AuthGuard implements CanActivate {
       return false;
     } else {
       return from(
-        axios.get('https://backend-production-3c07.up.railway.app/authenticated', {
+        axios.get(`${this.apiUrl}/authenticated`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

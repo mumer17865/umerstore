@@ -4,9 +4,9 @@
     <div class="yy">
       <div class="details">
       <form>
-        <input type="name" id="name" placeholder="Full Name" name="name" [(ngModel)]="name" required />
+          <input type="name" id="name" name="name" [(ngModel)]="name" required readonly/>
         <input type="contact" id="contact" placeholder="Mobile Number eg:03001234567" name="contact" [(ngModel)]="contact" required />
-        <input type="email" id="email" placeholder="Email" name="email" [(ngModel)]="email" required />
+          <input type="email" id="email" name="email" [(ngModel)]="email" required readonly/>
         <input type="address" id="address" placeholder="Shipping Address" name="address" [(ngModel)]="address" required />
       </form>
       </div>
@@ -55,7 +55,7 @@
         <p>Delivery Charge: <span>{{ deliveryCharge | pkrCurrency}}</span></p>
         <h3>Grand Total: <span>{{ getGrandTotal() | pkrCurrency}}</span></h3>
       </div>
-      <button (click)="placeOrder(); clearCart()">Place Order</button>
+        <button (click)="placeOrder(); clearCart()">Proceed to payment</button>
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { DateTimeFormatPipe } from '../date-time-format.pipe';
 import { CurrencyPipe } from '@angular/common';
 import { PkrCurrencyPipe } from "../pkr-currency.pipe";
+import { environment } from '../environment';
 
 @Component({
   selector: 'app-order-history',
@@ -15,6 +16,7 @@ import { PkrCurrencyPipe } from "../pkr-currency.pipe";
   styleUrl: './order-history.component.css'
 })
 export class OrderHistoryComponent {
+  private apiUrl = environment.apiUrl;
   isPopupVisible = false;
   selectedOrder: any;
   orders: any[] = [];
@@ -32,7 +34,7 @@ export class OrderHistoryComponent {
   }
 
   fetchProductDetails(userId: number) {
-    axios.get(`https://backend-production-3c07.up.railway.app/getHistory/history/${userId}`)
+    axios.get(`${this.apiUrl}/getHistory/history/${userId}`)
       .then((response) => {
         this.processOrders(response.data);
       })

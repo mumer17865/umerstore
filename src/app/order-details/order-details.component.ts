@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import axios from 'axios';
+import { environment } from '../environment';
 
 @Component({
   selector: 'app-order-details',
@@ -11,6 +12,7 @@ import axios from 'axios';
   styleUrls: ['./order-details.component.css']
 })
 export class OrderDetailsComponent implements OnInit {
+  private apiUrl = environment.apiUrl;
   orderId: number | undefined;
   items: any[] = [];
   id: number | undefined;
@@ -26,7 +28,7 @@ export class OrderDetailsComponent implements OnInit {
   }
 
   fetchOrderDetails(id: number, orderId: number) {
-    axios.get(`https://backend-production-3c07.up.railway.app/getHistory/history/${id}/details${orderId}`)
+    axios.get(`${this.apiUrl}/getHistory/history/${id}/details${orderId}`)
       .then((response) => {
         this.items = response.data;
       })
