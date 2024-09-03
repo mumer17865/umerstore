@@ -8,7 +8,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { PaymentComponent } from './payment/payment.component';
-import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
