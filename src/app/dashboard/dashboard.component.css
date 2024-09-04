@@ -478,7 +478,7 @@
   height: 64px; /* Navbar height */
   background-color: #333; /* Example background color */
   z-index: 1000;
-  justify-content: normal;
+  justify-content: none;
   }
 
   .name1 img{
