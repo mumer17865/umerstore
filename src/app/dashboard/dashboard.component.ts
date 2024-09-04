@@ -120,7 +120,7 @@ export class DashboardComponent implements OnInit {
 
   closeAll() {
     this.showUser = false;
-    this.cart1();
+    this.showCart = false;
   }
   
   cart1() {
