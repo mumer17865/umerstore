@@ -478,10 +478,11 @@
   height: 64px; /* Navbar height */
   background-color: #333; /* Example background color */
   z-index: 1000;
+  justify-content: normal;
   }
 
   .name1 img{
-    width: 200px;
+    width: 150px;
     height: 50px;
   }
   
