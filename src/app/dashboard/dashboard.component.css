@@ -487,11 +487,11 @@
     height: 50px;
   }
 
-  .cart-box::-webkit-scrollbar {
+  .cart-content::-webkit-scrollbar {
     display: none; /* Hide the scrollbar in Webkit-based browsers (e.g., Chrome, Safari) */
   }
   
-  .cart-box {
+  .cart-content {
     -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
     scrollbar-width: none; /* Hide scrollbar in Firefox */
   }
