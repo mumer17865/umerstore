@@ -124,6 +124,12 @@
     background-color: #938484; /* Changes the circle's background color on hover */
     color: #fff; /* Changes the "X" color on hover */
   }
+
+  @media (max-width: 400px) {
+    .order-summary{
+      min-height: 150px;
+    }
+  }
   
   
   
