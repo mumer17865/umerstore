@@ -225,9 +225,9 @@ export class DashboardComponent implements OnInit {
   }
 
   checkout() {
+      this.cart1();
       this.cartService.setCartItems(this.cartItems);
       this.router.navigate(['./checkout']);
-    
     // axios.post('http://localhost:3000/checkout', this.cartItems)
     // .then((response) => {
     //     this.router.navigate(['./checkout']);

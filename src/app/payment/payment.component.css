@@ -116,3 +116,19 @@ hr {
     margin: 3px 0;
 }
 
+@media (max-width: 400px) {
+    .main{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btnI img{
+        width: 200px;
+      }
+
+      .order-summary{
+        padding: 0;
+        margin: 40px;
+      }
+  }
+
