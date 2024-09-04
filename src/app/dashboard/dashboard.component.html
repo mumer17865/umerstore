@@ -4,7 +4,10 @@
         <li><img src="assets/Logo-removebg-preview.png" alt="Example Image" class="logo"/></li>
         <li><div class="name1"><img src="assets/Logo-removebg-preview2.png" alt="name" /></div></li>
         <div class="username">
-          <div class="c" (click)="cart1(); hideUser();" matBadge="{{num}}" [matBadgeHidden]="! (num > 0)"><mat-icon aria-hidden="false" aria-label="cart icon" fontIcon="shopping_cart"></mat-icon></div>
+          <li><a><button title="order history" mat-icon-button (click)="showHistory()">
+            <mat-icon>history</mat-icon>
+          </button></a></li>
+          <button title="cart" class="c" (click)="cart1(); hideUser();" matBadge="{{num}}" [matBadgeHidden]="! (num > 0)"><mat-icon aria-hidden="false" aria-label="cart icon" fontIcon="shopping_cart"></mat-icon></button>
           <li><a (click)="User()"><div class="login-icon">{{ getInitials(Payload.Name) }}</div></a></li>
         </div>
       </ul>
