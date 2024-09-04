@@ -92,10 +92,11 @@
 }
 
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
   .product-details-container {
       flex-direction: column;
       padding: 10px;
+      width: auto;
   }
   .product-image{
     margin-top: 0;
