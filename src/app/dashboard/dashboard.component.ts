@@ -120,17 +120,20 @@ export class DashboardComponent implements OnInit {
 
   closeAll() {
     this.showUser = false;
-    this.showCart = false;
+    this.cart1();
   }
   
   cart1() {
     this.showCart = !this.showCart;
     this.loadCartItems();
+    if (this.showCart) {
+      this.renderer.setStyle(document.body, 'overflow', 'hidden');
+    } else {
+      this.renderer.removeStyle(document.body, 'overflow');
+    }
   }
 
-  hideCart1(){
-    this.showCart = false;
-  }
+
 
   showHistory(){
     this.router.navigate([`./order-history/${this.Payload.id}`]);
@@ -175,9 +178,7 @@ export class DashboardComponent implements OnInit {
   
 
 
-  makeResponsive() {
-    this.showCart = false; // Close the cart // Remove the unresponsive class
-  }
+ 
   
 
   getInitials(name: string): string {
@@ -214,6 +215,9 @@ export class DashboardComponent implements OnInit {
 
   getSubtotal(): number {
     return this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  }
+  makeResponsive() {
+    this.cart1(); // Close the cart // Remove the unresponsive class
   }
 
   getGrandTotal(): number {

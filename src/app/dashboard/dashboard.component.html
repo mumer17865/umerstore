@@ -17,7 +17,7 @@
       <div *ngIf="showProducts" class="product-heading">
         <h1><b>Products</b></h1>
       </div>
-      <div *ngIf="showProducts" class="product-container">
+      <div  *ngIf="showProducts" class="product-container">
         <div *ngFor="let product of ItemList" class="product-item"> 
            <div (click)="details(product.productId)">
           <img [src]="product.image" [alt]="product.productName">

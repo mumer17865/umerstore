@@ -438,6 +438,8 @@
     position: absolute;
     transform: translateY(-10%);
   }
+
+
    .cart-box,
   .cart-content {
     overflow-x: hidden;
