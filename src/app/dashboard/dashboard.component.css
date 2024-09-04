@@ -236,7 +236,7 @@
     top: 0;
     width: 100%;
     max-width: 250px; /* Max width ensures it doesn't exceed this width */
-    height: 100%-64px;
+    height: 100%;
     background-color: rgb(255, 255, 255);
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -249,7 +249,6 @@
     flex-direction: column;
     z-index: 10000;
     border: 3px solid #077bff;
-    margin-bottom: 20px;
   }
   
   .cart-content {
