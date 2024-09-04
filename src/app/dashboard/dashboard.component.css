@@ -8,20 +8,37 @@
   nav{
     z-index: 100;
   }
+
+  h1{
+    display: flex;
+      justify-self: center;
+      flex-direction: column;
+      padding: 0%;
+      margin: 0;
+      margin-top: 64px; /* Space for the fixed navbar */
+      padding: 20px; /* Optional padding for content */
+
+  }
   
   ul {
     display: flex;
+    position: fixed;
   justify-content: space-between; /* This will spread out the items in the nav bar */
   align-items: center; /* Vertically center the items */
 
     list-style-type: none;
     overflow: hidden;
     background: radial-gradient(circle, rgba(238,174,202,1) 30%, rgba(148,187,233,1) 100%);
+
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px; /* Example background color */
+    z-index: 1000;
   }
   
-  li {
-    float: left;
-  }
+
   
   h1 {
     color: #1f1f1f;
@@ -235,7 +252,7 @@
     right: 0;
     top: 0;
     width: 100%;
-    max-width: 250px; /* Max width ensures it doesn't exceed this width */
+    max-width: 350px; /* Max width ensures it doesn't exceed this width */
     height: 100%;
     background-color: rgb(255, 255, 255);
     box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
@@ -397,7 +414,6 @@
   
   .overlay {
     position: fixed;
-    margin-top: 64px;
     top: 0;
     left: 0;
     width: 100%;
@@ -427,7 +443,7 @@
     overflow-x: hidden;
   }
   
-  @media (max-width: 500px) {
+  @media (max-width: 300px) {
     .product-item{
       min-width: 100%;
       min-height: 200px;
@@ -494,6 +510,10 @@
   .cart-content {
     -ms-overflow-style: none; /* Hide scrollbar in Internet Explorer and Edge */
     scrollbar-width: none; /* Hide scrollbar in Firefox */
+  }
+
+  .cart-box{
+    max-width: 250px;
   }
   
 } 
