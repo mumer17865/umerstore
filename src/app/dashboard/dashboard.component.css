@@ -247,7 +247,7 @@
     border-top-left-radius: 20px;
     display: flex;
     flex-direction: column;
-    z-index: 10000;
+    z-index: 998;
     border: 3px solid #077bff;
   }
   
