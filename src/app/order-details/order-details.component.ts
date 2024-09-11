@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import axios from 'axios';
 import { environment } from '../environment';
@@ -7,7 +7,7 @@ import { environment } from '../environment';
 @Component({
   selector: 'app-order-details',
   standalone: true,
-  imports:[CommonModule],
+  imports: [CommonModule],
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css']
 })
@@ -19,6 +19,8 @@ export class OrderDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {}
 
+
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.orderId = +params['orderId'];
@@ -26,6 +28,7 @@ export class OrderDetailsComponent implements OnInit {
       this.fetchOrderDetails(this.id, this.orderId);
     });
   }
+  
 
   fetchOrderDetails(id: number, orderId: number) {
     axios.get(`${this.apiUrl}/getHistory/history/${id}/details${orderId}`)

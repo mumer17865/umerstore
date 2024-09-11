@@ -2,8 +2,9 @@
     <nav>
       <ul>
         <li><img src="assets/Logo-removebg-preview.png" alt="Example Image" class="logo"/></li>
+        <li><img src="assets/WhatsApp_Image_2024-09-09_at_16.26.19-removebg-preview.png" alt="Example Image" class="name1"/></li>
         <div class="username">
-          <li><a><button title="order history" mat-icon-button (click)="showHistory()">
+          <li><a><button class="history" title="order history" mat-icon-button (click)="showHistory()">
             <mat-icon>history</mat-icon>
           </button></a></li>
           <button title="cart" class="c" (click)="cart1(); hideUser();" matBadge="{{num}}" [matBadgeHidden]="! (num > 0)"><mat-icon aria-hidden="false" aria-label="cart icon" fontIcon="shopping_cart"></mat-icon></button>

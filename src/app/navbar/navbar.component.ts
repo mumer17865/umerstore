@@ -1,12 +1,12 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import axios from 'axios';
 import { CartService } from '../services/cart.service';
-import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import axios from 'axios';
 import { environment } from '../environment';
 
 interface Product {
@@ -22,28 +22,25 @@ interface Product {
 }
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-navbar',
   standalone: true,
   imports: [CommonModule, FormsModule, MatIconModule, MatButtonModule, MatBadgeModule],
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
 })
-export class DashboardComponent implements OnInit {
+export class NavbarComponent {
   private apiUrl = environment.apiUrl;
   deliveryCharge = 199;
   showProducts: boolean = false;
-  showUser: boolean = false;
-  showCart: boolean = false;
-  Payload: any;
   ItemList: Product[] = [];
   cartItems: any[] = [];
-  showCartItem: boolean = false;
-  productId: number | undefined;
-  quantity: string | undefined;
-  num: number = 0;
   token: string = '';
-
-  constructor(private router: Router, private cartService: CartService, private renderer: Renderer2) {}
+  showCart: boolean = false;
+  Payload: any;
+  showUser: boolean = false;
+  num: number = 0;
+  showCartItem: boolean = false;
+  constructor(private router: Router,  private cartService: CartService, private renderer: Renderer2, private elementRef: ElementRef) {}
 
   ngOnInit() {
     this.token = sessionStorage.getItem('token') ?? '';
@@ -55,7 +52,8 @@ export class DashboardComponent implements OnInit {
     this.loadCartItems();
     this.products();
   }
-  
+
+
   loadCartItems() {
     const cartItems = this.cartService.getCartItems();
     this.cartItems = cartItems.map((item: any) => {
@@ -95,13 +93,6 @@ export class DashboardComponent implements OnInit {
     this.showUser = false;
   }
 
-  
-  
-
-
-  details(product1: number) {
-    this.router.navigate(['/productdetails', product1]);
-    }
 
   updateShowCartItem() {
     this.showCartItem = this.cartItems.length > 0;
@@ -112,17 +103,16 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  
-
   User() {
     this.showUser = !this.showUser;
   }
 
   closeAll() {
+    console.log("closeall please");
     this.showUser = false;
     this.showCart = false;
   }
-  
+
   cart1() {
     this.showCart = !this.showCart;
     this.loadCartItems();
@@ -133,8 +123,6 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-
-
   showHistory(){
     this.router.navigate([`./order-history/${this.Payload.id}`]);
   }
@@ -142,6 +130,7 @@ export class DashboardComponent implements OnInit {
   hideUser() {
     this.showUser = false;
   }
+
   increment(productId: number): void {
     const product = this.ItemList.find(p => p.productId === productId);
     if (product) {
@@ -152,7 +141,6 @@ export class DashboardComponent implements OnInit {
       this.loadCartItems();
     }
   }
-
 
   decrement(productId: number): void {
     const product = this.ItemList.find(p => p.productId === productId);
@@ -175,11 +163,6 @@ export class DashboardComponent implements OnInit {
       this.ItemList[productId-1].quantity=quantity;
     }
   }
-  
-
-
- 
-  
 
   getInitials(name: string): string {
     const names = name.split(' ');
@@ -195,13 +178,11 @@ export class DashboardComponent implements OnInit {
     product.display= false;
   }
 
-
   clearCart() {
     this.num=0;
     this.cartService.clearCart();
     this.updateShowCartItem();
   }
-  
 
   removeFromCart(productId: number) { 
     const product = this.ItemList.find(p => p.productId === productId);
@@ -216,6 +197,7 @@ export class DashboardComponent implements OnInit {
   getSubtotal(): number {
     return this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }
+
   makeResponsive() {
     this.cart1(); // Close the cart // Remove the unresponsive class
   }
@@ -224,18 +206,31 @@ export class DashboardComponent implements OnInit {
     return this.getSubtotal() + this.deliveryCharge;
   }
 
-  checkout() {
-      this.cart1();
-      this.cartService.setCartItems(this.cartItems);
-      this.router.navigate(['./checkout']);
-    // axios.post('http://localhost:3000/checkout', this.cartItems)
-    // .then((response) => {
-    //     this.router.navigate(['./checkout']);
-    // }, (error) => {
-    //   alert('Request Failed');
-    //   console.log(error);
-    // });
-  }
 
-  
+  checkout() {
+    this.cart1();
+    this.cartService.setCartItems(this.cartItems);
+    this.router.navigate(['./checkout']);
+  // axios.post('http://localhost:3000/checkout', this.cartItems)
+  // .then((response) => {
+  //     this.router.navigate(['./checkout']);
+  // }, (error) => {
+  //   alert('Request Failed');
+  //   console.log(error);
+  // });
+}
+
+home(){
+  this.router.navigate(['./dashboard']);
+}
+
+@HostListener('document:click', ['$event'])
+onClickOutside(event: Event) {
+  const clickedInside = this.elementRef.nativeElement.contains(event.target);
+  if (!clickedInside && this.showUser) {
+    this.showUser = false;
+  }
+}
+
+
 }

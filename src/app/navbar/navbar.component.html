@@ -1,0 +1,63 @@
+<div class="prime">
+<nav>
+    <ul>
+      <li title="home" (click)="home()"><img src="assets/Logo-removebg-preview.png" alt="Example Image" class="logo"/></li>
+      <div class="username">
+        <li><a><button title="order history" mat-icon-button (click)="showHistory()">
+          <mat-icon>history</mat-icon>
+        </button></a></li>
+        <button title="cart" class="c" (click)="cart1(); hideUser();" matBadge="{{num}}" [matBadgeHidden]="! (num > 0)"><mat-icon aria-hidden="false" aria-label="cart icon" fontIcon="shopping_cart"></mat-icon></button>
+        <li><a (click)="User()"><button class="login-icon">{{ getInitials(Payload.Name) }}</button></a></li>
+      </div>
+    </ul>
+  </nav>
+
+  <div *ngIf="showCart" class="overlay" (click)="makeResponsive()"></div>
+
+
+  <div *ngIf="showUser" class="profile-box">
+    <div class="header">
+      <div class="profile-name">Name: {{Payload.Name}}</div>
+    </div>
+    <div class="other-options">
+      <div class="option">Email: {{Payload.Email}}</div>
+      <div class="option">Username: {{Payload.userName}}</div>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+
+  <div *ngIf="showCart" class="cart-box">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <a *ngIf="showCartItem" href="#" class="clear-cart" (click)="clearCart()">Clear cart</a>
+    </div>
+    <div class="cart-content">
+      <div *ngIf="!showCartItem" class="cart-empty">
+        <h3>Your Cart is empty</h3>
+      </div>
+      <div class="cart-items-wrapper">
+        <div class="cart-items" *ngFor="let cart of cartItems">    
+          <div class="cart-item">
+            <img [src]="cart.image" alt="Product Image">
+            <div class="item-details">
+              <p class="item-name">{{cart.productName}}</p>
+              <div class="item-controls">
+                <button class="quantity-btn" (click)="decrement(cart.productId)">-</button>
+                <input type="text" class="quantity-input" [(ngModel)]="cart.quantity" readonly>
+                <button class="quantity-btn" (click)="increment(cart.productId)">+</button>
+              </div>
+              <p class="item-price">Rs. {{cart.price}}</p>
+            </div>
+            <button class="remove-item" (click)="removeFromCart(cart.productId)">🗑️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showCart && getSubtotal() > 0" class="cart-summary">
+      <p>Subtotal: <span>Rs. {{ getSubtotal().toFixed(2) }}</span></p>
+      <p>Delivery Charges: <span>Rs. {{ deliveryCharge.toFixed(2) }}</span></p>
+      <p>Grand total: <span>Rs. {{ getGrandTotal().toFixed(2) }}</span></p>
+      <button class="checkout-btn" (click)="checkout()">Proceed To Checkout</button>
+    </div>
+  </div>
+</div>

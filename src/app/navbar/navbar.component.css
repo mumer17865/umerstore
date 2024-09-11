@@ -1,5 +1,3 @@
-
-
 * {
     margin: 0;
     padding: 0; /* Ensure padding and borders are included in element's total width and height */
@@ -19,9 +17,7 @@
       padding: 20px; /* Optional padding for content */
 
   }
-  .history{
-  color: purple;
-  }
+  
   ul {
     display: flex;
     position: fixed;
@@ -30,7 +26,7 @@
 
     list-style-type: none;
     overflow: hidden;
-    background: radial-gradient(circle, rgba(35, 31, 32, 1) 30%, rgba(212, 172, 12, 1) 100%);
+    background: radial-gradient(circle, rgba(238,174,202,1) 30%, rgba(148,187,233,1) 100%);
 
 
     top: 0;
@@ -62,7 +58,6 @@
     border-radius: 15px;
     background-color: transparent;
     border: transparent;
-    color: purple;
   }
   
   
@@ -322,9 +317,9 @@
     border-radius: 5px;
   }
 
-  .name1{
-    height: 200px;
-    width: 300px;
+  .name1{ /* Allows this element to take up available space */
+    padding: 0;
+    margin: 0;
   }
 
 .logo{
@@ -335,7 +330,10 @@
     margin: 0;
     padding: 0;
 }
-
+  .name1 img {
+    width: 300px;
+    height: 50px;
+  }
   .item-details {
     flex: 1;
   }
@@ -435,7 +433,7 @@
     color: white;
     font-weight: bold;
     font-size: 16px;
-    position: absolute;
+    border: transparent;
     transform: translateY(-10%);
   }
 
@@ -500,10 +498,9 @@
   justify-content: flex-start;
   }
 
-
-  .name1{
-    width: 185px;
-    height: 200px;
+  .name1 img{
+    width: 175px;
+    height: 50px;
   }
 
   .cart-content::-webkit-scrollbar {
@@ -520,3 +517,5 @@
   }
   
 } 
+  
+  

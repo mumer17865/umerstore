@@ -82,6 +82,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   placeOrder() {
+
+    if (this.name && this.contact && this.address) {
+      // Proceed with the order
+      console.log('Order placed successfully.');
+    } else {
+      console.log('Form is invalid.');
+    }
     const orderData= [
        {
         id: this.id,
