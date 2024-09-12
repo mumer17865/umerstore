@@ -116,7 +116,7 @@ hr {
     margin: 3px 0;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .main{
       display: flex;
       flex-direction: column;
@@ -127,8 +127,22 @@ hr {
       }
 
       .order-summary{
-        padding: 0;
-        margin: 40px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        align-self: center;
       }
-  }
+
+      .top1{
+        width: 330px;
+        padding: 0;
+        margin: 0;
+    }
+    .checkout_btn{
+        margin-top: 20px;
+        padding: 0;
+    } 
+    .tab{
+        margin-top: 40px;
+    }
+}
 
