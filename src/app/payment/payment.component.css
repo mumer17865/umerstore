@@ -144,5 +144,9 @@ hr {
     .tab{
         margin-top: 40px;
     }
+
+    p{
+        text-align: center;
+    }
 }
 
