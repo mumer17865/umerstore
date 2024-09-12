@@ -2,7 +2,7 @@
 
 * {
     margin: 0;
-    padding: 0; /* Ensure padding and borders are included in element's total width and height */
+    padding: 0;
   }
 
   nav{
@@ -445,7 +445,7 @@
     overflow-x: hidden;
   }
   
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     .product-item{
       min-width: 100%;
       min-height: 200px;
@@ -490,6 +490,7 @@
   }
 
   ul{
+    display:inline-flex;
     position: fixed;
   top: 0;
   left: 0;
@@ -497,7 +498,6 @@
   height: 64px; /* Navbar height */
   background-color: #333; /* Example background color */
   z-index: 1000;
-  justify-content: flex-start;
   }
 
 
