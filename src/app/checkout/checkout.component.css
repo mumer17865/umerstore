@@ -204,7 +204,10 @@ form input:focus {
 @media (max-width: 768px) {
   .checkout-box {
       flex-direction: column;
-      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
   }
 
   .checkout-container,
@@ -224,5 +227,9 @@ form input:focus {
   .additional-details,
   .details {
       margin-top: 20px; /* Remove horizontal translation */
+  }
+
+  .main{
+    padding-bottom: 1px;
   }
 }

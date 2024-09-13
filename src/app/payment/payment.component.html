@@ -66,7 +66,7 @@
                 <img [src]="item.image" alt={{item.productName}}>
                 <div class="item-details">
                     <p>{{item.productName}}</p>
-                    <p>Qty: {{item.quantity}}</p>
+                    <div class="sub"><p>Qty: {{item.quantity}} <span>PKR {{item.price*item.quantity}} </span></p></div>
                     <p>PKR {{item.price}}</p>
                 </div>
             </div>

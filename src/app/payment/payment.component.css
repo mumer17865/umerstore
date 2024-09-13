@@ -51,6 +51,7 @@ button {
     font-family: Arial, sans-serif;
 }
 
+
   .order-summary {
     margin: 100px;
     width: 300px;
@@ -69,7 +70,8 @@ button {
 }
 
 .summary-section p,
-.total-section p {
+.total-section p
+{
     display: flex;
     justify-content: space-between;
     margin: 5px 0;
@@ -115,6 +117,11 @@ hr {
 .shipping-method p {
     margin: 3px 0;
 }
+.sub p {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
 
 @media (max-width: 500px) {
     .main{
@@ -145,8 +152,10 @@ hr {
         margin-top: 40px;
     }
 
-    p{
-        text-align: center;
+
+
+    .container{
+        height: 77vh;
     }
 }
 
