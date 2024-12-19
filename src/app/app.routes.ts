@@ -8,10 +8,6 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { PaymentComponent } from './payment/payment.component';
-import { AddInventoryComponent } from './add-inventory/add-inventory.component';
-import { UpdateOrderStatusComponent } from './update-order-status/update-order-status.component';
-import { TaskComponent } from './task/task.component';
-import { TestComponent } from './test/test.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -21,11 +17,7 @@ export const routes: Routes = [
   { path: 'productdetails/:id', component: ProductdetailsComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   { path: 'order-history/:id', component: OrderHistoryComponent, canActivate: [AuthGuard]},
-  { path: 'payment/:orderId', component: PaymentComponent, canActivate: [AuthGuard]}, 
-  { path: 'admin', component: AddInventoryComponent, canActivate: [AuthGuard]},
-  { path: 'admin/updateorder', component: UpdateOrderStatusComponent, canActivate: [AuthGuard]},
-  { path: 'admin/dashboard', component: TaskComponent, canActivate: [AuthGuard]},
-  { path: 'admin/test', component: TestComponent, canActivate: [AuthGuard]},
+  { path: 'payment/:orderId', component: PaymentComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
