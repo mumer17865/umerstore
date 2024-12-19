@@ -8,7 +8,7 @@
           <div *ngIf="form1.submitted && !form1.controls['contact']?.valid">
             Mobile Number is required.
           </div>
-          <input type="text" id="contact" placeholder="Mobile Number eg:03001234567" name="contact" [(ngModel)]="contact" required />
+          <input type="text" id="contact" placeholder="Mobile Number:03123456789" name="contact" [(ngModel)]="contact" required />
           <div *ngIf="form1.submitted && !form1.controls['address']?.valid">
             Shipping Address is required.
           </div>
