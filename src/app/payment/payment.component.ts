@@ -142,7 +142,7 @@ export class PaymentComponent implements OnInit {
       (response) => {
         this.orderStatus = response;
         console.log('Order status:', response.data.body.payment_method);
-        if(response.data.body.payment_method.transaction_id){
+        if(response.data.body.payment_method.transaction_id == null){
           this.cOD1();
         }
       },
